@@ -89,6 +89,8 @@ export class InputHandler {
 
   private state: RetroControllerInputs = blankInputs();
   private previous: RetroControllerInputs = blankInputs();
+  private pointer: RetroControllerInputs = blankInputs();
+  private pulseState: RetroControllerInputs = blankInputs();
   private readonly heldSince = new Map<InputAction, number>();
   private readonly keys = new Set<string>();
   private readonly listeners = new Set<ConnectionListener>();
@@ -123,6 +125,8 @@ export class InputHandler {
 
   private readonly onBlur = (): void => {
     this.keys.clear();
+    this.pointer = blankInputs();
+    this.pulseState = blankInputs();
     this.state = blankInputs();
     this.previous = blankInputs();
     this.heldSince.clear();
@@ -151,8 +155,14 @@ export class InputHandler {
     }
 
     for (const action of INPUT_ACTIONS) {
-      this.state[action] = padInputs[action] || keyboardInputs[action];
+      this.state[action] =
+        padInputs[action] ||
+        keyboardInputs[action] ||
+        this.pointer[action] ||
+        this.pulseState[action];
     }
+
+    this.pulseState = blankInputs();
 
     const now = performance.now();
     for (const action of INPUT_ACTIONS) {
@@ -170,6 +180,14 @@ export class InputHandler {
       this.padName = nextName;
       this.notifyConnection();
     }
+  }
+
+  public setPointer(action: InputAction, down: boolean): void {
+    this.pointer[action] = down;
+  }
+
+  public pulse(action: InputAction): void {
+    this.pulseState[action] = true;
   }
 
   public isDown(action: InputAction): boolean {

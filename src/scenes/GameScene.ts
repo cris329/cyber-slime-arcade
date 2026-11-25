@@ -121,7 +121,7 @@ export class GameScene extends Phaser.Scene {
 
     if (this.gameOver) {
       this.fx.updateFever(delta, false);
-      if (input.justPressed("start")) {
+      if (input.justPressed("start") || input.justPressed("buttonA")) {
         this.restartRun();
       } else if (input.justPressed("select")) {
         this.returnToMenu();

@@ -277,14 +277,16 @@ export class GameHud {
       this.skinSwatch,
       this.skinText,
       scene.add
-        .text(68, 686, "SELECT CAMBIA · MANTEN REINICIA", {
+        .text(68, 686, window.matchMedia("(pointer: coarse)").matches
+          ? "DESLIZA PARA MOVER EL SLIME"
+          : "SELECT CAMBIA · MANTEN REINICIA", {
           fontFamily: FONT_BODY,
           fontSize: "8px",
           color: "#526d7e",
         })
         .setLetterSpacing(1.2),
       scene.add
-        .text(GAME_WIDTH / 2, 699, "START PAUSA", {
+        .text(GAME_WIDTH / 2, 699, window.matchMedia("(pointer: coarse)").matches ? "" : "START PAUSA", {
           fontFamily: FONT_BODY,
           fontSize: "8px",
           color: "#526d7e",
@@ -686,7 +688,9 @@ export class GameHud {
       .text(
         GAME_WIDTH / 2,
         460,
-        "START: REINICIAR     ·     SELECT: MENU",
+        window.matchMedia("(pointer: coarse)").matches
+          ? "TOCA PARA JUGAR OTRA VEZ"
+          : "START: REINICIAR     ·     SELECT: MENU",
         {
           fontFamily: FONT_BODY,
           fontSize: "11px",

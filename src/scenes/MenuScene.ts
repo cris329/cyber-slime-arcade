@@ -278,10 +278,13 @@ export class MenuScene extends Phaser.Scene {
       )
       .setAlpha(0.94);
 
+    const finger = window.matchMedia("(pointer: coarse)").matches;
     const rows: readonly [string, string, string][] = [
       ["OBJETIVO", "RECOGE GEMAS ANTES DEL 00:00", "#63ff9b"],
       ["FIEBRE", "COMBO 10 ENCIENDE EL MULTIPLICADOR x5", "#ffc83d"],
-      ["MANDO", "D-PAD · A/B/X/Y · TURBO · SELECT · START", "#38f2ff"],
+      finger
+        ? ["DEDO", "DESLIZA ARRIBA, ABAJO Y A LOS LADOS", "#38f2ff"]
+        : ["MANDO", "D-PAD · A/B/X/Y · TURBO · SELECT · START", "#38f2ff"],
     ];
 
     rows.forEach((row, index) => {
@@ -325,12 +328,21 @@ export class MenuScene extends Phaser.Scene {
     panel.lineStyle(1, 0x38f2ff, 0.16);
     panel.strokeRoundedRect(x + 3, y + 3, width - 6, height - 6, 10);
 
-    const primary = neonText(this, x + 22, y + 15, "START / ENTER", 22, "#effdff", {
-      weight: "900",
-      glow: "#63ff9b",
-      glowBlur: 14,
-      letterSpacing: 1.6,
-    });
+    const finger = window.matchMedia("(pointer: coarse)").matches;
+    const primary = neonText(
+      this,
+      x + 22,
+      y + 15,
+      finger ? "TOCA LA PANTALLA" : "START / ENTER",
+      22,
+      "#effdff",
+      {
+        weight: "900",
+        glow: "#63ff9b",
+        glowBlur: 14,
+        letterSpacing: 1.6,
+      },
+    );
 
     const secondary = neonText(
       this,
@@ -343,7 +355,7 @@ export class MenuScene extends Phaser.Scene {
     );
 
     this.add
-      .text(x + width - 20, y + 45, "A TAMBIEN INICIA", {
+      .text(x + width - 20, y + 45, finger ? "DESLIZA PARA MOVER" : "A TAMBIEN INICIA", {
         fontFamily: FONT_BODY,
         fontSize: "10px",
         color: "#728b9c",
