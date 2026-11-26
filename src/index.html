@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05030f" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305030f'/%3E%3Cpath d='M12 34c0-12 9-20 20-20s20 8 20 20-9 20-20 20S12 46 12 34z' fill='%2345ff8f'/%3E%3Cellipse cx='25' cy='32' rx='4' ry='6' fill='%2305030f'/%3E%3Cellipse cx='39' cy='32' rx='4' ry='6' fill='%2305030f'/%3E%3C/svg%3E"
+    />
+    <title>Cyber Slime Arcade</title>
+    <meta
+      name="description"
+      content="Arcade neon de rebotes con soporte para mando retro mediante la Gamepad API."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient-orb orb-cyan"></span>
+      <span class="ambient-orb orb-pink"></span>
+      <span class="ambient-orb orb-gold"></span>
+    </div>
+
+    <div class="cabinet">
+      <header class="marquee">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"><i></i></span>
+          <div class="brand-copy">
+            <h1>CYBER <em>SLIME</em> <span>ARCADE</span></h1>
+            <p>REBOTA // RECOLECTA // ENTRA EN FIEBRE</p>
+          </div>
+        </div>
+
+        <div class="status-cluster">
+          <div id="pad-status" class="chip">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="chip-copy">
+              <strong id="pad-label">MANDO OFF</strong>
+              <small id="pad-name">Pulsa un boton del mando</small>
+            </span>
+          </div>
+          <button id="fullscreen" class="chip chip-button" type="button">
+            PANTALLA COMPLETA
+          </button>
+        </div>
+      </header>
+
+      <main id="game-shell">
+        <span class="corner corner-tl" aria-hidden="true"></span>
+        <span class="corner corner-tr" aria-hidden="true"></span>
+        <span class="corner corner-bl" aria-hidden="true"></span>
+        <span class="corner corner-br" aria-hidden="true"></span>
+        <div id="game" role="application" aria-label="Cyber Slime Arcade"></div>
+        <div class="glass-sheen" aria-hidden="true"></div>
+      </main>
+
+      <footer class="deck">
+        <div class="legend">
+          <div class="legend-item">
+            <kbd>D-PAD</kbd>
+            <span>Mover / salto</span>
+          </div>
+          <div class="legend-item">
+            <kbd>A</kbd>
+            <span>Salto elastico</span>
+          </div>
+          <div class="legend-item">
+            <kbd>B</kbd>
+            <span>Escudo</span>
+          </div>
+          <div class="legend-item">
+            <kbd>X / Y</kbd>
+            <span>Dash / iman</span>
+          </div>
+          <div class="legend-item">
+            <kbd>TURBO</kbd>
+            <span>Velocidad extra</span>
+          </div>
+          <div class="legend-item">
+            <kbd>START</kbd>
+            <span>Pausa / iniciar</span>
+          </div>
+          <div class="legend-item">
+            <kbd>SELECT</kbd>
+            <span>Skin / reiniciar</span>
+          </div>
+          <div class="legend-item legend-keys">
+            <kbd>TECLADO</kbd>
+            <span>Flechas · Espacio · Enter · Tab</span>
+          </div>
+        </div>
+        <p class="legal">PHASER 3 // TYPESCRIPT ESTRICTO // HTML5 GAMEPAD API</p>
+      </footer>
+    </div>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

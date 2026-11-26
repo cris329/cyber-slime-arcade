@@ -1,0 +1,30 @@
+{
+  "name": "cyber-slime-arcade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cyber Slime Arcade - juego de rebotes neon con soporte para mando retro (Gamepad API)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "publish": "npm run build && node scripts/publish.mjs",
+    "single": "npm run build && node scripts/bundle-single.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "keywords": [
+    "phaser",
+    "typescript",
+    "gamepad",
+    "arcade"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  }
+}
